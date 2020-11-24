@@ -67,5 +67,24 @@ namespace AddressBookMSTest
             bool actual = addressBookRepo.UpdateContactTypeTable();
             Assert.IsTrue(actual);
         }
+        /// <summary>
+        /// Given query for the adding new contact to table when database is connected should return true.
+        /// </summary>
+        [TestMethod]
+        public void GivenqueryforAddingContactToTable_WhenDatabaseIsConnected_ShouldReturnTrue()
+        {
+            AddressBookModel addressBookModel = new AddressBookModel();
+            AddressBookRepo addressBookRepo = new AddressBookRepo();
+            addressBookModel.firstName = "kalyan";
+            addressBookModel.lastName = "Goud";
+            addressBookModel.Address = "sriramnager";
+            addressBookModel.City = "Nlg";
+            addressBookModel.State = "TS";
+            addressBookModel.zip = "508001";
+            addressBookModel.PhoneNumber = "7732063720";
+            addressBookModel.ContactTypeId = 3;
+            bool actual = addressBookRepo.AddContact(addressBookModel);
+            Assert.IsTrue(actual);
+        }
     }
 }
