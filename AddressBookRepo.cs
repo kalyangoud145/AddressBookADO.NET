@@ -272,5 +272,54 @@ namespace AddressBookADO.NET
                 }
             }
         }
+        public void RetriveContactInGivenDateRange()
+        {
+            try
+            {
+                AddressBookModel model = new AddressBookModel();
+                using (this.connection)
+                {
+                    // Query for retriving all the data
+                    string query = @"select * from Contact WHERE Contact.AddedDate BETWEEN CAST('01-01-2020' as date) and GETDATE()";
+                    SqlCommand cmd = new SqlCommand(query, this.connection);
+                    this.connection.Open();
+                    // Reads the passed data base
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            model.PersonId = dataReader.GetInt32(0);
+                            model.firstName = dataReader.GetString(1);
+                            model.lastName = dataReader.GetString(2);
+                            model.Address = dataReader.GetString(3);
+                            model.City = dataReader.GetString(4);
+                            model.State = dataReader.GetString(5);
+                            model.zip = dataReader.GetString(6);
+                            model.PhoneNumber = dataReader.GetString(7);
+                            model.ContactTypeId = dataReader.GetInt32(8);
+                            model.AddedDate = dataReader.GetDateTime(9);
+                            // Prints the retrived values
+                            Console.WriteLine(model.PersonId + " " + model.firstName + " " + model.lastName + " " + model.Address + " " + model.City + " " + model.State + " " + model.zip + " " + model.PhoneNumber + " " + model.contactType+" "+model.AddedDate); 
+                            Console.WriteLine("\n");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found");
+                    }
+                    dataReader.Close();
+                    this.connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
     }
 }
