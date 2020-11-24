@@ -272,6 +272,10 @@ namespace AddressBookADO.NET
                 }
             }
         }
+        /// <summary>
+        /// Retrived contacts for given date range
+        /// </summary>
+        /// <returns></returns>
         public void RetriveContactInGivenDateRange()
         {
             try
