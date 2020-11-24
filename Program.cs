@@ -7,10 +7,11 @@ namespace AddressBookADO.NET
         static void Main(string[] args)
         {
             AddressBookRepo addressBookRepo = new AddressBookRepo();
-           // addressBookRepo.GetAllContactTable();
-           // addressBookRepo.GetAllDataOfContactBookName();
-            //addressBookRepo.GetAllDataOfContactType();
+            addressBookRepo.GetAllContactTable();
+            addressBookRepo.GetAllDataOfContactBookName();
+            addressBookRepo.GetAllDataOfContactType();
             addressBookRepo.UpdateContactTable();
+            addressBookRepo.RetriveContactInGivenDateRange();
         }
     }
 }

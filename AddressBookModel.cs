@@ -7,11 +7,12 @@ namespace AddressBookADO.NET
     /// <summary>
     /// POCO class
     /// </summary>
-    class AddressBookModel
+    public class AddressBookModel
     {
         public int PersonId { get; set; }
         public int Id { get; set; }
         public int BookId { get; set; }
+        public DateTime AddedDate { get; set; }
         public int ContactTypeId { get; set; }
         public string BookName { get; set; }
         public string firstName { get; set; }
