@@ -6,7 +6,10 @@ namespace AddressBookADO.NET
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            AddressBookRepo addressBookRepo = new AddressBookRepo();
+            addressBookRepo.GetAllContactTable();
+            addressBookRepo.GetAllDataOfContactBookName();
+            addressBookRepo.GetAllDataOfContactType();
         }
     }
 }
