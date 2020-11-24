@@ -7,6 +7,7 @@ namespace AddressBookADO.NET
         static void Main(string[] args)
         {
             AddressBookRepo addressBookRepo = new AddressBookRepo();
+            AddressBookModel addressBookModel = new AddressBookModel();
             addressBookRepo.GetAllContactTable();
             addressBookRepo.GetAllContactTable();
             addressBookRepo.GetAllDataOfContactBookName();
@@ -15,6 +16,17 @@ namespace AddressBookADO.NET
             addressBookRepo.RetriveContactInGivenDateRange();
             addressBookRepo.RetriveContactInGivenCity();
             addressBookRepo.RetriveContactInGivenState();
+            addressBookModel.firstName = "kalyan";
+            addressBookModel.lastName = "Goud";
+            addressBookModel.Address = "sriramnager";
+            addressBookModel.City = "Nlg";
+            addressBookModel.State = "TS";
+            addressBookModel.zip = "508001";
+            addressBookModel.PhoneNumber = "7732063720";
+            addressBookModel.ContactTypeId = 3;
+            addressBookRepo.AddContact(addressBookModel);
+        
+
         }
     }
 }
