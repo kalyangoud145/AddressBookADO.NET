@@ -161,5 +161,116 @@ namespace AddressBookADO.NET
             }
             return false;
         }
+        /// <summary>
+        /// Update data from contact table
+        /// </summary>
+        /// <returns></returns>
+        public bool UpdateContactTable()
+        {
+            using (this.connection)
+            {
+                try
+                {
+                    this.connection.Open();
+                    SqlCommand command = this.connection.CreateCommand();
+                    // Takes command type as text
+                    command.CommandText = @"update Contact set City = 'Siliconvalley' where PersonId =3 ";
+                    // Returns number of rows effected
+                    int numberOfEffectedRows = command.ExecuteNonQuery();
+                    // If number of rows not equal to zero then retuns true 
+                    // Else returns false
+                    if (numberOfEffectedRows != 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    this.connection.Close();
+                }
+            }
+        }
+        /// <summary>
+        /// Update contact Book Table
+        /// </summary>
+        /// <returns></returns>
+        public bool UpdateContactBookTable()
+        {
+            using (this.connection)
+            {
+                try
+                {
+                    this.connection.Open();
+                    SqlCommand command = this.connection.CreateCommand();
+                    // Takes command type as text
+                    command.CommandText = @"update Contact_BookName  set Book_name = 'Neighbours' where PersonId =5 ";
+                    // Returns number of rows effected
+                    int numberOfEffectedRows = command.ExecuteNonQuery();
+                    // If number of rows not equal to zero then retuns true 
+                    // Else returns false
+                    if (numberOfEffectedRows != 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    this.connection.Close();
+                }
+            }
+        }
+        /// <summary>
+        /// Update contact Type Table
+        /// </summary>
+        /// <returns></returns>
+        public bool UpdateContactTypeTable()
+        {
+            using (this.connection)
+            {
+                try
+                {
+                    this.connection.Open();
+                    SqlCommand command = this.connection.CreateCommand();
+                    // Takes command type as text
+                    command.CommandText = @"update Contact_Type  set Contact_Type = 'Friend' where Contact_typeID =1 ";
+                    // Returns number of rows effected
+                    int numberOfEffectedRows = command.ExecuteNonQuery();
+                    // If number of rows not equal to zero then retuns true 
+                    // Else returns false
+                    if (numberOfEffectedRows != 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    this.connection.Close();
+                }
+            }
+        }
     }
 }
