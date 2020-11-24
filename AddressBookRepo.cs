@@ -89,7 +89,7 @@ namespace AddressBookADO.NET
                             model.BookId = dataReader.GetInt32(1);
                             model.BookName = dataReader.GetString(2);
                             // Prints the retrived values
-                            Console.WriteLine(model.PersonId+" "+model.BookId+" "+ model.BookName);
+                            Console.WriteLine(model.PersonId + " " + model.BookId + " " + model.BookName);
                             Console.WriteLine("\n");
                         }
                         this.connection.Close();
@@ -137,7 +137,7 @@ namespace AddressBookADO.NET
                             model.ContactTypeId = dataReader.GetInt32(0);
                             model.contactType = dataReader.GetString(1);
                             // Prints the retrived values
-                            Console.WriteLine(model.ContactTypeId + " " + model.contactType );
+                            Console.WriteLine(model.ContactTypeId + " " + model.contactType);
                             Console.WriteLine("\n");
                         }
                         this.connection.Close();

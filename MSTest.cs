@@ -37,5 +37,35 @@ namespace AddressBookMSTest
             bool actual = addressBookRepo.GetAllDataOfContactType();
             Assert.IsTrue(actual);
         }
+        /// <summary>
+        /// Given query for the updating  data from contact  table when database is connected should return true.
+        /// </summary>
+        [TestMethod]
+        public void GivenqueryforUpdatingdataFromContactTable_WhenDatabaseIsConnected_ShouldReturnTrue()
+        {
+            AddressBookRepo addressBookRepo = new AddressBookRepo();
+            bool actual = addressBookRepo.UpdateContactTable();
+            Assert.IsTrue(actual);
+        }
+        /// <summary>
+        /// Given query for the updating  data from contact Book table when database is connected should return true.
+        /// </summary>
+        [TestMethod]
+        public void GivenqueryforUpdatingdataFromContactBookTable_WhenDatabaseIsConnected_ShouldReturnTrue()
+        {
+            AddressBookRepo addressBookRepo = new AddressBookRepo();
+            bool actual = addressBookRepo.UpdateContactBookTable();
+            Assert.IsTrue(actual);
+        }
+        /// <summary>
+        /// Given query for the updating  data from contact type table when database is connected should return true.
+        /// </summary>
+        [TestMethod]
+        public void GivenqueryforUpdatingdataFromContactTypeTable_WhenDatabaseIsConnected_ShouldReturnTrue()
+        {
+            AddressBookRepo addressBookRepo = new AddressBookRepo();
+            bool actual = addressBookRepo.UpdateContactTypeTable();
+            Assert.IsTrue(actual);
+        }
     }
 }
