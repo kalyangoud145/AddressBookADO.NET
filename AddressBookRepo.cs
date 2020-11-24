@@ -325,5 +325,112 @@ namespace AddressBookADO.NET
                 this.connection.Close();
             }
         }
+        /// <summary>
+        /// Retrived contacts in the given city
+        /// </summary>
+        /// <returns></returns>
+        public void RetriveContactInGivenCity()
+        {
+            try
+            {
+                AddressBookModel model = new AddressBookModel();
+                using (this.connection)
+                {
+                    // Query for retriving all the data of particular city
+                    string query = @"select * from Contact WHERE City='Chicago'";
+                    SqlCommand cmd = new SqlCommand(query, this.connection);
+                    this.connection.Open();
+                    // Reads the passed data base
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            model.PersonId = dataReader.GetInt32(0);
+                            model.firstName = dataReader.GetString(1);
+                            model.lastName = dataReader.GetString(2);
+                            model.Address = dataReader.GetString(3);
+                            model.City = dataReader.GetString(4);
+                            model.State = dataReader.GetString(5);
+                            model.zip = dataReader.GetString(6);
+                            model.PhoneNumber = dataReader.GetString(7);
+                            model.ContactTypeId = dataReader.GetInt32(8);
+                            model.AddedDate = dataReader.GetDateTime(9);
+                            // Prints the retrived values
+                            Console.WriteLine(model.PersonId + " " + model.firstName + " " + model.lastName + " " + model.Address + " " + model.City + " " + model.State + " " + model.zip + " " + model.PhoneNumber + " " + model.contactType + " " + model.AddedDate);
+                            Console.WriteLine("\n");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found");
+                    }
+                    dataReader.Close();
+                    this.connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+        /// <summary>
+        /// Retrived contacts in the given state
+        /// </summary>
+        /// <returns></returns>
+        public void RetriveContactInGivenState()
+        {
+            try
+            {
+                AddressBookModel model = new AddressBookModel();
+                using (this.connection)
+                {
+                    // Query for retriving all the data of particular city
+                    string query = @"select * from Contact WHERE State ='NY'";
+                    SqlCommand cmd = new SqlCommand(query, this.connection);
+                    this.connection.Open();
+                    // Reads the passed data base
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            model.PersonId = dataReader.GetInt32(0);
+                            model.firstName = dataReader.GetString(1);
+                            model.lastName = dataReader.GetString(2);
+                            model.Address = dataReader.GetString(3);
+                            model.City = dataReader.GetString(4);
+                            model.State = dataReader.GetString(5);
+                            model.zip = dataReader.GetString(6);
+                            model.PhoneNumber = dataReader.GetString(7);
+                            model.ContactTypeId = dataReader.GetInt32(8);
+                            model.AddedDate = dataReader.GetDateTime(9);
+                            // Prints the retrived values
+                            Console.WriteLine(model.PersonId + " " + model.firstName + " " + model.lastName + " " + model.Address + " " + model.City + " " + model.State + " " + model.zip + " " + model.PhoneNumber + " " + model.contactType + " " + model.AddedDate);
+                            Console.WriteLine("\n");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found");
+                    }
+                    dataReader.Close();
+                    this.connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
     }
 }

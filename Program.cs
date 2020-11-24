@@ -8,10 +8,13 @@ namespace AddressBookADO.NET
         {
             AddressBookRepo addressBookRepo = new AddressBookRepo();
             addressBookRepo.GetAllContactTable();
+            addressBookRepo.GetAllContactTable();
             addressBookRepo.GetAllDataOfContactBookName();
             addressBookRepo.GetAllDataOfContactType();
             addressBookRepo.UpdateContactTable();
             addressBookRepo.RetriveContactInGivenDateRange();
+            addressBookRepo.RetriveContactInGivenCity();
+            addressBookRepo.RetriveContactInGivenState();
         }
     }
 }
