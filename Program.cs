@@ -8,11 +8,10 @@ namespace AddressBookADO.NET
         {
             AddressBookRepo addressBookRepo = new AddressBookRepo();
             AddressBookModel addressBookModel = new AddressBookModel();
-            addressBookRepo.GetAllContactTable();
-            addressBookRepo.GetAllContactTable();
-            addressBookRepo.GetAllDataOfContactBookName();
-            addressBookRepo.GetAllDataOfContactType();
-            addressBookRepo.UpdateContactTable();
+            //addressBookRepo.GetAllContactTable("Contact");
+            addressBookRepo.GetAllDataOfContactBookName("Contact_BookName");
+            addressBookRepo.GetAllDataOfContactType("Contact_Type");
+            addressBookRepo.UpdateContactTable("PersonId =3");
             addressBookRepo.RetriveContactInGivenDateRange();
             addressBookRepo.RetriveContactInGivenCity();
             addressBookRepo.RetriveContactInGivenState();
@@ -25,8 +24,6 @@ namespace AddressBookADO.NET
             addressBookModel.PhoneNumber = "7732063720";
             addressBookModel.ContactTypeId = 3;
             addressBookRepo.AddContact(addressBookModel);
-        
-
         }
     }
 }

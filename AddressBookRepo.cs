@@ -13,7 +13,7 @@ namespace AddressBookADO.NET
         /// <summary>
         /// Retrive all data of the contact table
         /// </summary>
-        public bool GetAllContactTable()
+        public bool GetAllContactTable(string tableName)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace AddressBookADO.NET
                 using (this.connection)
                 {
                     // Query for retriving all the data
-                    string query = "Select * from Contact";
+                    string query = "Select * from " + tableName ;
                     SqlCommand cmd = new SqlCommand(query, this.connection);
                     this.connection.Open();
                     // Reads the passed data base
@@ -68,7 +68,7 @@ namespace AddressBookADO.NET
         /// Retrive the data of contact book name table
         /// </summary>
         /// <returns></returns>
-        public bool GetAllDataOfContactBookName()
+        public bool GetAllDataOfContactBookName(string table)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace AddressBookADO.NET
                 using (this.connection)
                 {
                     // Query for retriving all the data
-                    string query = "Select * from Contact_BookName";
+                    string query = "Select * from " + table ;
                     SqlCommand cmd = new SqlCommand(query, this.connection);
                     this.connection.Open();
                     // Reads the passed data base
@@ -117,7 +117,7 @@ namespace AddressBookADO.NET
         /// Gets all the data from contact type table
         /// </summary>
         /// <returns></returns>
-        public bool GetAllDataOfContactType()
+        public bool GetAllDataOfContactType(string tableName)
         {
             try
             {
@@ -125,7 +125,7 @@ namespace AddressBookADO.NET
                 using (this.connection)
                 {
                     // Query for retriving all the data
-                    string query = "Select * from Contact_Type";
+                    string query = "Select * from "+ tableName;
                     SqlCommand cmd = new SqlCommand(query, this.connection);
                     this.connection.Open();
                     // Reads the passed data base
@@ -165,7 +165,7 @@ namespace AddressBookADO.NET
         /// Update data from contact table
         /// </summary>
         /// <returns></returns>
-        public bool UpdateContactTable()
+        public bool UpdateContactTable(string searchCondition)
         {
             using (this.connection)
             {
@@ -174,7 +174,7 @@ namespace AddressBookADO.NET
                     this.connection.Open();
                     SqlCommand command = this.connection.CreateCommand();
                     // Takes command type as text
-                    command.CommandText = @"update Contact set City = 'Siliconvalley' where PersonId =3 ";
+                    command.CommandText = @"update Contact set City = 'Siliconvalley' where " + searchCondition;
                     // Returns number of rows effected
                     int numberOfEffectedRows = command.ExecuteNonQuery();
                     // If number of rows not equal to zero then retuns true 
@@ -202,7 +202,7 @@ namespace AddressBookADO.NET
         /// Update contact Book Table
         /// </summary>
         /// <returns></returns>
-        public bool UpdateContactBookTable()
+        public bool UpdateContactBookTable(string searchCondition)
         {
             using (this.connection)
             {
@@ -211,7 +211,7 @@ namespace AddressBookADO.NET
                     this.connection.Open();
                     SqlCommand command = this.connection.CreateCommand();
                     // Takes command type as text
-                    command.CommandText = @"update Contact_BookName  set Book_name = 'Neighbours' where PersonId =5 ";
+                    command.CommandText = @"update Contact_BookName  set Book_name = 'Neighbours' where " +searchCondition;
                     // Returns number of rows effected
                     int numberOfEffectedRows = command.ExecuteNonQuery();
                     // If number of rows not equal to zero then retuns true 
@@ -239,7 +239,7 @@ namespace AddressBookADO.NET
         /// Update contact Type Table
         /// </summary>
         /// <returns></returns>
-        public bool UpdateContactTypeTable()
+        public bool UpdateContactTypeTable(String searchCondition)
         {
             using (this.connection)
             {
@@ -248,7 +248,7 @@ namespace AddressBookADO.NET
                     this.connection.Open();
                     SqlCommand command = this.connection.CreateCommand();
                     // Takes command type as text
-                    command.CommandText = @"update Contact_Type  set Contact_Type = 'Friend' where Contact_typeID =1 ";
+                    command.CommandText = @"update Contact_Type  set Contact_Type = 'Friend' where "+ searchCondition;
                     // Returns number of rows effected
                     int numberOfEffectedRows = command.ExecuteNonQuery();
                     // If number of rows not equal to zero then retuns true 
