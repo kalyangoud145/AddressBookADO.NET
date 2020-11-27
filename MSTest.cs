@@ -1,5 +1,8 @@
 using AddressBookADO.NET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AddressBookMSTest
 {
@@ -157,6 +160,52 @@ namespace AddressBookMSTest
             AddressBookRepo addressBookRepo = new AddressBookRepo();
             bool actual = addressBookRepo.AddContact(addressBookModel);
             Assert.IsFalse(actual);
+        }
+        /// <summary>
+        /// Addings the data to list.
+        /// </summary>
+        /// <returns></returns>
+        public List<AddressBookModel> AddingDataToList()
+        {
+            List<AddressBookModel> addressBookList = new List<AddressBookModel>();
+            addressBookList.Add(new AddressBookModel
+            {
+                firstName = "kalyan",
+                lastName = "goud",
+                Address = "sriram nagar",
+                City = "nalgonda",
+                State = "telangana",
+                zip = "508001",
+                PhoneNumber = "8897221787",
+                ContactTypeId = 2
+            });
+            addressBookList.Add(new AddressBookModel
+            {
+                firstName = "anirudh",
+                lastName = "repala",
+                Address = "padmavathi",
+                City = "hyd",
+                State = "telangana",
+                zip = "507001",
+                PhoneNumber = "9550647660",
+                ContactTypeId = 1
+            });
+
+            return addressBookList;
+        }
+        /// <summary>
+        /// Givens the multiple person data to add without threading to database should give elapsed time.
+        /// </summary>
+        [TestMethod]
+        public void GivenMultiplePersonDataToAddWithoutThreading_ToDatabase_ShouldGiveElapsedTime()
+        {
+            List<AddressBookModel> employeeList = AddingDataToList();
+            ThreadingOperations multiThreading = new ThreadingOperations();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            multiThreading.AddContactListToDBWithoutThread(employeeList);
+            stopwatch.Stop();
+            Console.WriteLine("Time taken while adding to list with threading:{0}  ", stopwatch.Elapsed);
         }
     }
 }
