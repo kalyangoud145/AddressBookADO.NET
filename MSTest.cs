@@ -205,7 +205,21 @@ namespace AddressBookMSTest
             stopwatch.Start();
             multiThreading.AddContactListToDBWithoutThread(employeeList);
             stopwatch.Stop();
-            Console.WriteLine("Time taken while adding to list with threading:{0}  ", stopwatch.Elapsed);
+            Console.WriteLine("Time taken while adding to list with threading:{0}  ", stopwatch.ElapsedMilliseconds);
+        }
+        /// <summary>
+        ///  Givens the multiple person data to add with threading to database should give elapsed time.
+        /// </summary>
+        [TestMethod]
+        public void GivenMultiplePersonDataToAddWithThreading_ToDatabase_ShouldGiveElapsedTime()
+        {
+            List<AddressBookModel> employeeList = AddingDataToList();
+            ThreadingOperations multiThreading = new ThreadingOperations();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            multiThreading.AddContactListToDBWithThread(employeeList);
+            stopwatch.Stop();
+            Console.WriteLine("Time taken while adding to list with threading:{0}  ", stopwatch.ElapsedMilliseconds);
         }
     }
 }

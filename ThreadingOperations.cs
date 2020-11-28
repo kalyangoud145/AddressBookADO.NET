@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AddressBookADO.NET
@@ -23,7 +24,7 @@ namespace AddressBookADO.NET
             {
                 using (connection)
                 {
-                    
+
                     // Created instance of the given query and connection
                     SqlCommand sqlCommand = new SqlCommand("spContact", connection);
                     // Command type  as text for stored procedure
@@ -38,6 +39,7 @@ namespace AddressBookADO.NET
                     sqlCommand.Parameters.AddWithValue("@Phone_Number", model.PhoneNumber);
                     sqlCommand.Parameters.AddWithValue("@Contact_typeID", model.ContactTypeId);
                     sqlCommand.Parameters.AddWithValue("@AddedDate", DateTime.Now);
+                    //Thread.Sleep(5);
                     connection.Open();
 
                     // Returns the number of rows effected
@@ -76,6 +78,24 @@ namespace AddressBookADO.NET
                 Console.WriteLine("Contact added: " + contact.firstName);
             });
         }
-      
+        /// <summary>
+        /// Adds the contact list to database with threading.
+        /// </summary>
+        /// <param name="contactList">The contact list.</param>
+        public void AddContactListToDBWithThread(List<AddressBookModel> contactList)
+        {
+            contactList.ForEach(contact =>
+            {
+                Thread thread = new Thread(() =>
+                {
+                    Console.WriteLine("Contact Being added" + contact.firstName);
+                    this.AddContact(contact);
+                    Console.WriteLine("Contact added: " + contact.firstName);
+                });
+                thread.Start();
+                thread.Join();
+            });
+        }
+
     }
 }
